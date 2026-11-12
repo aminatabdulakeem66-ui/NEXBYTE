@@ -14,7 +14,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 
-export default function About({ onOpenContact }) {
+export default function About({ onSelectPage }) {
   const [activeTab, setActiveTab] = useState('engineering');
   const [showFullModal, setShowFullModal] = useState(false);
 
@@ -223,14 +223,14 @@ export default function About({ onOpenContact }) {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
 
-              <a
-                href="#contact"
-                onClick={onOpenContact}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-purpleLight hover:text-white transition-colors"
+              <button
+                type="button"
+                onClick={() => onSelectPage && onSelectPage('contact')}
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-purpleLight hover:text-white transition-colors cursor-pointer"
               >
                 <span>Speak with our team</span>
                 <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              </button>
             </div>
           </motion.div>
         </div>

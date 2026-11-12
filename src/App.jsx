@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import HomeView from './components/HomeView';
 import About from './components/About';
 import Services from './components/Services';
 import WhyChooseUs from './components/WhyChooseUs';
@@ -12,112 +12,118 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activePage, setActivePage] = useState('home');
   const [prefilledService, setPrefilledService] = useState('');
   const [initialProjectDetails, setInitialProjectDetails] = useState('');
 
-  // Active section scroll spy
+  // Sync with URL Hash on load & back/forward navigation
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'services', 'why-us', 'work', 'process', 'contact'];
-      const scrollPosition = window.scrollY + 200;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el) {
-          const top = el.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(sections[i]);
-            break;
-          }
-        }
+    const handleHashSync = () => {
+      const hash = window.location.hash.replace('#', '');
+      const validPages = ['home', 'about', 'services', 'why-us', 'work', 'process', 'contact'];
+      if (hash && validPages.includes(hash)) {
+        setActivePage(hash);
+      } else if (!hash) {
+        setActivePage('home');
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleHashSync();
+    window.addEventListener('hashchange', handleHashSync);
+    return () => window.removeEventListener('hashchange', handleHashSync);
   }, []);
 
-  const handleOpenContact = (e) => {
-    if (e && e.preventDefault) e.preventDefault();
-    const contactElem = document.querySelector('#contact');
-    if (contactElem) {
-      contactElem.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const handleSelectPage = (pageId, servicePreset = '', projectPreset = '') => {
+    setActivePage(pageId);
+    window.location.hash = pageId;
 
-  const handleExploreServices = (e) => {
-    if (e && e.preventDefault) e.preventDefault();
-    const servElem = document.querySelector('#services');
-    if (servElem) {
-      servElem.scrollIntoView({ behavior: 'smooth' });
+    if (servicePreset) {
+      setPrefilledService(servicePreset);
     }
-  };
-
-  const handleSelectServiceForContact = (serviceName) => {
-    setPrefilledService(serviceName);
-    const contactElem = document.querySelector('#contact');
-    if (contactElem) {
-      contactElem.scrollIntoView({ behavior: 'smooth' });
+    if (projectPreset) {
+      setInitialProjectDetails(projectPreset);
     }
-  };
 
-  const handleDiscussProject = (projectTitle) => {
-    setInitialProjectDetails(projectTitle);
-    const contactElem = document.querySelector('#contact');
-    if (contactElem) {
-      contactElem.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleTransferScope = (serviceName, summary) => {
-    setPrefilledService(serviceName);
-    setInitialProjectDetails(summary);
+    // Smooth scroll to top on page switch
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   return (
     <div className="min-h-screen bg-brand-deep text-white antialiased flex flex-col selection:bg-brand-purple selection:text-white">
-      {/* Sleek Navigation Bar */}
-      <Navbar activeSection={activeSection} />
+      {/* Sleek Dynamic Navigation Bar */}
+      <Navbar activePage={activePage} onSelectPage={handleSelectPage} />
 
-      {/* Main Content Sections */}
-      <main className="flex-1">
-        {/* 1. Hero Section (Light Lavender / Soft Off-white Background + Tech Visuals) */}
-        <Hero
-          onOpenContact={handleOpenContact}
-          onExploreServices={handleExploreServices}
-        />
+      {/* Main Content Area: Dedicated View Routing */}
+      <main className="flex-1 pt-16">
+        {/* HOME VIEW: Hero section, Studio Highlights, Featured Previews & CTA */}
+        {activePage === 'home' && (
+          <HomeView onSelectPage={handleSelectPage} />
+        )}
 
-        {/* 2. About Us Section (Technology Meets Creativity, Dark + Purple Accents) */}
-        <About onOpenContact={handleOpenContact} />
+        {/* ABOUT VIEW: Dedicated Technology Meets Creativity page */}
+        {activePage === 'about' && (
+          <div className="animate-in fade-in duration-300">
+            <About onSelectPage={handleSelectPage} />
+            <CallToAction onSelectPage={handleSelectPage} />
+          </div>
+        )}
 
-        {/* 3. Our Services Section (What We Do Best, 6 Cards) */}
-        <Services onSelectServiceForContact={handleSelectServiceForContact} />
+        {/* SERVICES VIEW: Dedicated What We Do Best page with Estimator & Modal */}
+        {activePage === 'services' && (
+          <div className="animate-in fade-in duration-300">
+            <Services
+              onSelectServiceForContact={(serviceName) => handleSelectPage('contact', serviceName)}
+              onSelectPage={handleSelectPage}
+            />
+            <ProjectEstimator
+              onTransferScope={(serviceName, summary) => handleSelectPage('contact', serviceName, summary)}
+            />
+            <CallToAction onSelectPage={handleSelectPage} />
+          </div>
+        )}
 
-        {/* 4. Why Choose Nexbyte? (5 Benefits + Radar Showcase) */}
-        <WhyChooseUs onOpenContact={handleOpenContact} />
+        {/* WHY US VIEW: Dedicated Why Businesses Choose Nexbyte page */}
+        {activePage === 'why-us' && (
+          <div className="animate-in fade-in duration-300">
+            <WhyChooseUs onSelectPage={handleSelectPage} />
+            <CallToAction onSelectPage={handleSelectPage} />
+          </div>
+        )}
 
-        {/* 5. Our Work / Portfolio (5 Concept Projects + Filter Tabs) */}
-        <Portfolio onDiscussProject={handleDiscussProject} />
+        {/* WORK VIEW: Dedicated Portfolio page with filters & interactive case studies */}
+        {activePage === 'work' && (
+          <div className="animate-in fade-in duration-300">
+            <Portfolio
+              onDiscussProject={(title) => handleSelectPage('contact', '', title)}
+            />
+            <CallToAction onSelectPage={handleSelectPage} />
+          </div>
+        )}
 
-        {/* 6. Our Working Process (4 Steps, Horizontal on Desktop, Vertical on Mobile) */}
-        <Process onOpenContact={handleOpenContact} />
+        {/* PROCESS VIEW: Dedicated How We Bring Ideas to Life page */}
+        {activePage === 'process' && (
+          <div className="animate-in fade-in duration-300">
+            <Process onSelectPage={handleSelectPage} />
+            <CallToAction onSelectPage={handleSelectPage} />
+          </div>
+        )}
 
-        {/* 7. Interactive Scope & Budget Estimator Tool */}
-        <ProjectEstimator onTransferScope={handleTransferScope} />
-
-        {/* 8. Call To Action Section (Have an Idea? Let's Build It) */}
-        <CallToAction onOpenContact={handleOpenContact} />
-
-        {/* 9. Contact Section (Working Validation & Submission Flow + WhatsApp) */}
-        <Contact
-          prefilledService={prefilledService}
-          initialProjectDetails={initialProjectDetails}
-        />
+        {/* CONTACT VIEW: Dedicated Contact page with validation & submission flow */}
+        {activePage === 'contact' && (
+          <div className="animate-in fade-in duration-300">
+            <Contact
+              prefilledService={prefilledService}
+              initialProjectDetails={initialProjectDetails}
+            />
+          </div>
+        )}
       </main>
 
-      {/* 10. Footer Section */}
-      <Footer />
+      {/* Footer across all pages */}
+      <Footer onSelectPage={handleSelectPage} />
     </div>
   );
 }

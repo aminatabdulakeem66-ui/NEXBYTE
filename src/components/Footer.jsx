@@ -14,7 +14,7 @@ import {
   LinkedinIcon as Linkedin
 } from './SocialIcons';
 
-export default function Footer({ onNavigate }) {
+export default function Footer({ onSelectPage }) {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -24,24 +24,14 @@ export default function Footer({ onNavigate }) {
     });
   };
 
-  const handleLinkClick = (e, href) => {
-    e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      const navOffset = 80;
-      const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+  const handleNav = (pageId) => {
+    if (onSelectPage) {
+      onSelectPage(pageId);
     }
   };
 
   return (
     <footer className="relative bg-brand-deep text-white border-t border-brand-purple/20 overflow-hidden pt-16 pb-12">
-      {/* Background Subtle Purple Glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-brand-purple/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,10 +39,13 @@ export default function Footer({ onNavigate }) {
         {/* Top Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-white/10">
           
-          {/* Col 1: Studio Identity & Description */}
+          {/* Col 1: Studio Identity */}
           <div className="lg:col-span-4 space-y-4">
-            {/* Logo */}
-            <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => handleNav('home')}
+              className="flex items-center gap-3 text-left group cursor-pointer"
+            >
               <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-brand-purpleLight via-brand-purple to-brand-purpleDark p-[1px] shadow-md shadow-brand-purple/30">
                 <div className="w-full h-full bg-brand-deep rounded-[11px] flex items-center justify-center">
                   <svg
@@ -81,14 +74,12 @@ export default function Footer({ onNavigate }) {
                   Innovating Today, Transforming Tomorrow
                 </span>
               </div>
-            </div>
+            </button>
 
-            {/* Short Description */}
             <p className="text-sm text-brand-grey leading-relaxed max-w-sm">
               Building modern digital experiences through creativity, technology and innovation.
             </p>
 
-            {/* Status indicator */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-card border border-brand-cardBorder text-xs text-brand-grey">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Global Studio · Accepting Q1/Q2 Projects</span>
@@ -102,49 +93,67 @@ export default function Footer({ onNavigate }) {
             </h4>
             <ul className="space-y-2 text-sm text-brand-grey">
               <li>
-                <a
-                  href="#home"
-                  onClick={(e) => handleLinkClick(e, '#home')}
-                  className="hover:text-brand-purpleLight transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNav('home')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
                 >
                   Home
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#about"
-                  onClick={(e) => handleLinkClick(e, '#about')}
-                  className="hover:text-brand-purpleLight transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNav('about')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
                 >
                   About
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#services"
-                  onClick={(e) => handleLinkClick(e, '#services')}
-                  className="hover:text-brand-purpleLight transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNav('services')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
                 >
                   Services
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#work"
-                  onClick={(e) => handleLinkClick(e, '#work')}
-                  className="hover:text-brand-purpleLight transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNav('why-us')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
+                >
+                  Why Us
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleNav('work')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
                 >
                   Our Work
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#contact"
-                  onClick={(e) => handleLinkClick(e, '#contact')}
-                  className="hover:text-brand-purpleLight transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNav('process')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
+                >
+                  Process
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleNav('contact')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
                 >
                   Contact
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -156,54 +165,54 @@ export default function Footer({ onNavigate }) {
             </h4>
             <ul className="space-y-2 text-sm text-brand-grey">
               <li>
-                <a
-                  href="#services"
-                  onClick={(e) => handleLinkClick(e, '#services')}
-                  className="hover:text-brand-purpleLight transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNav('services')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
                 >
                   Web Development
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#services"
-                  onClick={(e) => handleLinkClick(e, '#services')}
-                  className="hover:text-brand-purpleLight transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNav('services')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
                 >
                   Mobile Applications
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#services"
-                  onClick={(e) => handleLinkClick(e, '#services')}
-                  className="hover:text-brand-purpleLight transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNav('services')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
                 >
                   UI/UX Design
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#services"
-                  onClick={(e) => handleLinkClick(e, '#services')}
-                  className="hover:text-brand-purpleLight transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNav('services')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
                 >
                   Software Solutions
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#services"
-                  onClick={(e) => handleLinkClick(e, '#services')}
-                  className="hover:text-brand-purpleLight transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNav('services')}
+                  className="hover:text-brand-purpleLight transition-colors cursor-pointer text-left"
                 >
                   E-commerce Platforms
-                </a>
+                </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Social Media & Channels */}
+          {/* Col 4: Social Media */}
           <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
               Social Media
@@ -257,7 +266,7 @@ export default function Footer({ onNavigate }) {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Scroll to Top */}
+        {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-grey">
           <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
             <span>© {currentYear} Nexbyte Tech Studio. All rights reserved.</span>
@@ -270,7 +279,7 @@ export default function Footer({ onNavigate }) {
           <button
             type="button"
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-charcoal hover:bg-brand-purple/20 border border-brand-cardBorder hover:border-brand-purple/40 text-brand-grey hover:text-white transition-all"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-charcoal hover:bg-brand-purple/20 border border-brand-cardBorder hover:border-brand-purple/40 text-brand-grey hover:text-white transition-all cursor-pointer"
             title="Scroll to Top"
           >
             <span>Back to top</span>

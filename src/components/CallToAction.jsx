@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Zap, MessageSquare } from 'lucide-react';
 
-export default function CallToAction({ onOpenContact }) {
+export default function CallToAction({ onSelectPage }) {
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden bg-gradient-to-b from-brand-charcoal via-[#19062D] to-brand-deep text-white border-t border-brand-purple/20">
       
@@ -65,14 +65,14 @@ export default function CallToAction({ onOpenContact }) {
           transition={{ delay: 0.3 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a
-            href="#contact"
-            onClick={onOpenContact}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-brand-purple via-[#9647FF] to-brand-purpleDark hover:from-brand-purpleLight hover:to-brand-purple text-white font-extrabold text-base shadow-2xl shadow-brand-purple/40 hover:shadow-brand-purple/60 hover:-translate-y-1 transition-all duration-300 group"
+          <button
+            type="button"
+            onClick={() => onSelectPage && onSelectPage('contact')}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-brand-purple via-[#9647FF] to-brand-purpleDark hover:from-brand-purpleLight hover:to-brand-purple text-white font-extrabold text-base shadow-2xl shadow-brand-purple/40 hover:shadow-brand-purple/60 hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
           >
             <span>Start Your Project</span>
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1.5" />
-          </a>
+          </button>
 
           <a
             href="https://wa.me/1234567890?text=Hi%20Nexbyte%20Tech%20Studio,%20I'd%20like%20to%20discuss%20a%20new%20project."

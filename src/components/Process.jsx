@@ -10,7 +10,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-export default function Process({ onOpenContact }) {
+export default function Process({ onSelectPage }) {
   const [activeStep, setActiveStep] = useState(0);
 
   const steps = [

@@ -14,7 +14,7 @@ import {
   Smartphone
 } from 'lucide-react';
 
-export default function Hero({ onOpenContact, onExploreServices }) {
+export default function Hero({ onSelectPage }) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -105,23 +105,23 @@ export default function Hero({ onOpenContact, onExploreServices }) {
             variants={itemVariants}
             className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
           >
-            <a
-              href="#services"
-              onClick={onExploreServices}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-white font-bold text-base bg-gradient-to-r from-brand-purple via-[#7E2FE8] to-brand-purpleDark hover:from-brand-purpleLight hover:to-brand-purple shadow-xl shadow-brand-purple/35 hover:shadow-brand-purple/50 hover:-translate-y-0.5 transition-all duration-300 group"
+            <button
+              type="button"
+              onClick={() => onSelectPage && onSelectPage('services')}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-white font-bold text-base bg-gradient-to-r from-brand-purple via-[#7E2FE8] to-brand-purpleDark hover:from-brand-purpleLight hover:to-brand-purple shadow-xl shadow-brand-purple/35 hover:shadow-brand-purple/50 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer"
             >
               <span>Explore Our Services</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            </button>
 
-            <a
-              href="#contact"
-              onClick={onOpenContact}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-[#120F26] font-bold text-base bg-white border-2 border-brand-purple/30 hover:border-brand-purple hover:bg-brand-lavenderHero shadow-md hover:shadow-lg transition-all duration-300"
+            <button
+              type="button"
+              onClick={() => onSelectPage && onSelectPage('contact')}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-[#120F26] font-bold text-base bg-white border-2 border-brand-purple/30 hover:border-brand-purple hover:bg-brand-lavenderHero shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
             >
               <span>Start a Project</span>
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            </a>
+            </button>
           </motion.div>
 
           {/* Quick Credibility Trust Badges */}

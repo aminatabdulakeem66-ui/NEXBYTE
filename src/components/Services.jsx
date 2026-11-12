@@ -24,7 +24,7 @@ const iconMap = {
   Workflow: Workflow,
 };
 
-export default function Services({ onSelectServiceForContact }) {
+export default function Services({ onSelectServiceForContact, onSelectPage }) {
   const [selectedService, setSelectedService] = useState(null);
 
   const containerVariants = {
@@ -175,12 +175,13 @@ export default function Services({ onSelectServiceForContact }) {
           <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-brand-deep/70 border border-brand-cardBorder text-xs sm:text-sm text-brand-grey">
             <Layers className="w-4 h-4 text-brand-purpleLight" />
             <span>Need a custom technology architecture or cross-disciplinary team?</span>
-            <a
-              href="#contact"
-              className="font-semibold text-white hover:text-brand-purpleLight underline underline-offset-4 transition-colors"
+            <button
+              type="button"
+              onClick={() => onSelectPage && onSelectPage('contact')}
+              className="font-semibold text-white hover:text-brand-purpleLight underline underline-offset-4 transition-colors cursor-pointer"
             >
               Contact our solutions architects
-            </a>
+            </button>
           </div>
         </div>
       </div>

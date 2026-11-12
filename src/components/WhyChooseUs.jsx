@@ -13,7 +13,7 @@ import {
   Code
 } from 'lucide-react';
 
-export default function WhyChooseUs({ onOpenContact }) {
+export default function WhyChooseUs({ onSelectPage }) {
   const [activeBenefit, setActiveBenefit] = useState(0);
 
   const benefits = [
@@ -253,14 +253,14 @@ export default function WhyChooseUs({ onOpenContact }) {
 
               {/* Bottom CTA within showcase */}
               <div className="mt-6 pt-5 border-t border-white/10 text-center">
-                <a
-                  href="#contact"
-                  onClick={onOpenContact}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-brand-purple hover:bg-brand-purpleLight text-white font-semibold text-xs uppercase tracking-wider transition-colors shadow-lg shadow-brand-purple/30"
+                <button
+                  type="button"
+                  onClick={() => onSelectPage && onSelectPage('contact')}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-brand-purple hover:bg-brand-purpleLight text-white font-semibold text-xs uppercase tracking-wider transition-colors shadow-lg shadow-brand-purple/30 cursor-pointer"
                 >
                   <span>Build With Nexbyte Tech Studio</span>
                   <span>→</span>
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>
