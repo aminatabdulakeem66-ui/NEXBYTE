@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pulseBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080812" />
+      <stop offset="100%" stop-color="#121021" />
+    </linearGradient>
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C084FC" />
+      <stop offset="100%" stop-color="#8B35FF" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" rx="16" fill="url(#pulseBg)" stroke="#292442" stroke-width="1.5" />
+
+  <!-- Browser header -->
+  <rect width="800" height="42" rx="16" fill="#0F0E1B" />
+  <rect y="30" width="800" height="12" fill="#0F0E1B" />
+  <line x1="0" y1="42" x2="800" y2="42" stroke="#232036" stroke-width="1" />
+  <circle cx="28" cy="21" r="5" fill="#FF5F56" />
+  <circle cx="46" cy="21" r="5" fill="#FFBD2E" />
+  <circle cx="64" cy="21" r="5" fill="#27C93F" />
+  <rect x="250" y="10" width="300" height="22" rx="6" fill="#181628" />
+  <text x="400" y="25" fill="#8481A0" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" text-anchor="middle">pulsecloud.ai/developer</text>
+
+  <!-- Announce pill -->
+  <rect x="270" y="65" width="260" height="26" rx="13" fill="#20183A" stroke="#483378" stroke-width="1" />
+  <circle cx="285" cy="78" r="4" fill="#22C55E" />
+  <text x="405" y="82" fill="#D8B4FE" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" text-anchor="middle">⚡ Pulse Engine 3.0 Released · View Docs</text>
+
+  <!-- Big Hero Title -->
+  <text x="400" y="125" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" text-anchor="middle">Autonomous Cloud AI for Engineers</text>
+  <text x="400" y="152" fill="#9F9DBA" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" text-anchor="middle">Ship backend workloads with zero configuration, auto-scaling clusters, and millisecond latency.</text>
+
+  <!-- CTA buttons -->
+  <rect x="280" y="175" width="115" height="36" rx="8" fill="url(#neonPurple)" />
+  <text x="337" y="198" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-weight="bold" font-size="12" text-anchor="middle">Deploy Free</text>
+  <rect x="405" y="175" width="115" height="36" rx="8" fill="#1B172E" stroke="#3A3258" stroke-width="1" />
+  <text x="462" y="198" fill="#D6D4EB" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" text-anchor="middle">Read Docs</text>
+
+  <!-- Code Playground Center Preview -->
+  <rect x="60" y="230" width="680" height="235" rx="12" fill="#0C0B17" stroke="#2D2849" stroke-width="1" />
+  <!-- Code bar -->
+  <rect x="60" y="230" width="680" height="34" rx="12" fill="#141224" />
+  <rect x="60" y="252" width="680" height="12" fill="#141224" />
+  <text x="85" y="252" fill="#B77AFF" font-family="'Space Grotesk', monospace" font-size="11">api-client.ts</text>
+  <text x="180" y="252" fill="#696782" font-family="'Space Grotesk', monospace" font-size="11">telemetry.worker.ts</text>
+  <rect x="670" y="238" width="55" height="18" rx="4" fill="#25203D" />
+  <text x="697" y="251" fill="#9D9CB5" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" text-anchor="middle">Copy</text>
+
+  <!-- Code lines -->
+  <text x="85" y="290" fill="#E2E8F0" font-family="'Space Grotesk', monospace" font-size="12"><tspan fill="#F472B6">import</tspan> { PulseCluster } <tspan fill="#F472B6">from</tspan> <tspan fill="#34D399">'@pulse/cloud'</tspan>;</text>
+  <text x="85" y="315" fill="#E2E8F0" font-family="'Space Grotesk', monospace" font-size="12"><tspan fill="#60A5FA">const</tspan> cluster = <tspan fill="#F472B6">await</tspan> PulseCluster.<tspan fill="#FBBF24">init</tspan>({ region: <tspan fill="#34D399">'global-edge'</tspan>, autoscaling: <tspan fill="#A78BFA">true</tspan> });</text>
+  <text x="85" y="340" fill="#E2E8F0" font-family="'Space Grotesk', monospace" font-size="12"><tspan fill="#60A5FA">const</tspan> deployment = <tspan fill="#F472B6">await</tspan> cluster.<tspan fill="#FBBF24">deployModel</tspan>(<tspan fill="#34D399">'nexbyte-llm-v2'</tspan>);</text>
+  <text x="85" y="365" fill="#34D399" font-family="'Space Grotesk', monospace" font-size="12">✔ [READY] 42 edge pods instantiated in 480ms across 18 continents.</text>
+  <text x="85" y="390" fill="#38BDF8" font-family="'Space Grotesk', monospace" font-size="12">ℹ [STATUS] Zero cold starts. Realtime throughput: 85,400 req/sec.</text>
+
+  <!-- Floating Live ROI Badge -->
+  <rect x="520" y="330" width="190" height="105" rx="10" fill="#17142A" stroke="#8B35FF" stroke-width="1.5" />
+  <text x="535" y="355" fill="#B8B8C5" font-family="'Plus Jakarta Sans', sans-serif" font-size="11">Estimated Cloud Savings</text>
+  <text x="535" y="388" fill="#34D399" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="24">$14,280 /mo</text>
+  <text x="535" y="415" fill="#A78BFA" font-family="'Plus Jakarta Sans', sans-serif" font-size="11">Based on 1.2M API triggers</text>
+</svg>

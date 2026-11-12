@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="auraBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090812" />
+      <stop offset="100%" stop-color="#141124" />
+    </linearGradient>
+    <linearGradient id="accentPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C084FC" />
+      <stop offset="100%" stop-color="#7E22CE" />
+    </linearGradient>
+    <linearGradient id="gemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D8B4FE" />
+      <stop offset="50%" stop-color="#8B35FF" />
+      <stop offset="100%" stop-color="#4C1D95" />
+    </linearGradient>
+    <filter id="auraglow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" rx="16" fill="url(#auraBg)" stroke="#2C2647" stroke-width="1.5" />
+
+  <!-- Navigation bar -->
+  <rect width="800" height="48" rx="16" fill="#120F21" />
+  <rect y="36" width="800" height="12" fill="#120F21" />
+  <line x1="0" y1="48" x2="800" y2="48" stroke="#26213D" stroke-width="1" />
+  
+  <text x="45" y="30" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="16" letter-spacing="2">AURA / LUXE</text>
+  <text x="210" y="30" fill="#B8B8C5" font-family="'Plus Jakarta Sans', sans-serif" font-size="12">Collections</text>
+  <text x="300" y="30" fill="#B8B8C5" font-family="'Plus Jakarta Sans', sans-serif" font-size="12">New In</text>
+  <text x="365" y="30" fill="#B8B8C5" font-family="'Plus Jakarta Sans', sans-serif" font-size="12">Bespoke</text>
+  <text x="440" y="30" fill="#B8B8C5" font-family="'Plus Jakarta Sans', sans-serif" font-size="12">Lookbook</text>
+
+  <!-- Cart Pill -->
+  <rect x="670" y="12" width="95" height="26" rx="13" fill="#201A38" stroke="#3D3261" stroke-width="1" />
+  <circle cx="688" cy="25" r="4" fill="#8B35FF" />
+  <text x="725" y="29" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" text-anchor="middle">Bag (3)</text>
+
+  <!-- Left Product Hero -->
+  <rect x="40" y="70" width="370" height="395" rx="14" fill="#151226" stroke="#2E274A" stroke-width="1" />
+  <!-- Glowing Product Pod -->
+  <circle cx="225" cy="230" r="110" fill="url(#accentPurple)" opacity="0.15" filter="url(#auraglow)" />
+  <polygon points="225,140 310,210 270,310 180,310 140,210" fill="url(#gemGrad)" stroke="#E9D5FF" stroke-width="1.5" />
+  <polygon points="225,140 250,210 225,310 200,210" fill="#C084FC" opacity="0.6" />
+  <line x1="225" y1="140" x2="225" y2="310" stroke="#FFFFFF" stroke-width="1" opacity="0.7" />
+
+  <!-- 3D Indicator Tag -->
+  <rect x="60" y="90" width="105" height="24" rx="6" fill="#261E42" />
+  <circle cx="75" cy="102" r="3" fill="#22C55E" />
+  <text x="115" y="106" fill="#D8B4FE" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" text-anchor="middle">3D SPATIAL VIEW</text>
+
+  <!-- Product Details Right Column -->
+  <rect x="430" y="70" width="330" height="395" rx="14" fill="#151226" stroke="#2E274A" stroke-width="1" />
+  <text x="460" y="110" fill="#B77AFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" letter-spacing="1">LIMITED EDITION / 04</text>
+  <text x="460" y="145" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-weight="bold" font-size="24">Aura Chrono Prism</text>
+  <text x="460" y="180" fill="#E2E1F0" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="28">$1,450.00</text>
+  
+  <rect x="460" y="200" width="80" height="20" rx="4" fill="#2A1E4A" />
+  <text x="500" y="214" fill="#22C55E" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" text-anchor="middle">★ 4.9 (148)</text>
+
+  <text x="460" y="250" fill="#9D9CB5" font-family="'Plus Jakarta Sans', sans-serif" font-size="12">Bespoke aerospace titanium casing with Swiss-crafted automatic mechanical movement and antireflective sapphire crystal.</text>
+
+  <!-- Color Selector -->
+  <text x="460" y="295" fill="#B8B8C5" font-family="'Plus Jakarta Sans', sans-serif" font-size="11">FINISH: OBSIDIAN VIOLET</text>
+  <circle cx="470" cy="315" r="9" fill="#8B35FF" stroke="#FFFFFF" stroke-width="2" />
+  <circle cx="498" cy="315" r="9" fill="#1E1E2F" stroke="#3D3A58" stroke-width="1.5" />
+  <circle cx="526" cy="315" r="9" fill="#E2E8F0" stroke="#3D3A58" stroke-width="1.5" />
+
+  <!-- Action CTA -->
+  <rect x="460" y="350" width="270" height="46" rx="10" fill="url(#accentPurple)" filter="url(#auraglow)" />
+  <text x="595" y="378" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-weight="bold" font-size="14" text-anchor="middle">Add to Bag — Express Checkout</text>
+
+  <text x="595" y="420" fill="#7E7C99" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" text-anchor="middle">Complimentary worldwide insured carbon-neutral delivery</text>
+</svg>
